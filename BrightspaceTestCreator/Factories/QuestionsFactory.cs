@@ -1,30 +1,49 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using Doc2Brightspace.Questions;
+using BrightspaceTestCreator.Questions;
 
-namespace Doc2Brightspace.Factories
+namespace BrightspaceTestCreator.Factories
 {
     public class QuestionsFactory
     {
-        public string SourceFile { get; }
+        public StreamReader StreamReader { get; }
 
+        /// <summary>
+        /// Determines total possible questions.
+        /// </summary>
         public int TotalPossibleQuestions
         {
             get
             {
-                var content = File.ReadAllText(SourceFile);
+                StreamReader.BaseStream.Seek(0, SeekOrigin.Begin);
+                var content = StreamReader.ReadToEnd();
 
                 return int.Parse(Regex.Match(content, @"(\d+)(?!.*\d+\.\s)", RegexOptions.Singleline).Value);
             }
         }
             
-
-        public QuestionsFactory(string sourceFile)
+        /// <summary>
+        /// Creates instance of QuestionsFactory.
+        /// </summary>
+        /// <param name="stream">Stream to read questions from.</param>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="stream"/> is not seekable or readable.</exception>
+        public QuestionsFactory(Stream stream)
         {
-            SourceFile = sourceFile;
+            if (!stream.CanRead)
+                throw new ArgumentException("Stream must be readable.", nameof(stream));
+
+            if (!stream.CanSeek)
+                throw new ArgumentException("Stream must be seekable.", nameof(stream));
+
+            StreamReader = new StreamReader(stream);
         }
 
+        /// <summary>
+        /// Builds questions from stream contents.
+        /// </summary>
+        /// <returns>IEnumerable list of <seealso cref="Question"/> instances.</returns>
         public IEnumerable<Question> Build()
         {
             IReadOnlyList<QuestionFactoryBase> questionFactories = new List<QuestionFactoryBase>
@@ -34,7 +53,8 @@ namespace Doc2Brightspace.Factories
                 new WrittenResponseQuestionFactory()
             };
 
-            var content = File.ReadAllText(SourceFile);
+            StreamReader.BaseStream.Seek(0, SeekOrigin.Begin);
+            var content = StreamReader.ReadToEnd();
 
             var questionRegex = new Regex(@"([ \t]*\d+\s*\.?[^\n]+\n(?:(?!\n\d+\s*\.?\s).)*)", RegexOptions.Singleline | RegexOptions.Multiline);
             var currentId = 1;

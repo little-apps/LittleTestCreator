@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
-using Doc2Brightspace.Questions;
-using Doc2Brightspace.Questions.MC;
+using BrightspaceTestCreator.Questions;
+using BrightspaceTestCreator.Questions.MultipleChoice;
 
-namespace Doc2Brightspace.Factories
+namespace BrightspaceTestCreator.Factories
 {
     public class MCQuestionFactory : QuestionFactoryBase
     {
@@ -33,7 +33,7 @@ namespace Doc2Brightspace.Factories
             var answers = questionMatch.Groups[3].Value;
             var correct = questionMatch.Groups[5].Value.Trim()[0];
 
-            MCQuestion question = new MCQuestion(num, text);
+            MultipleChoiceQuestion question = new MultipleChoiceQuestion(num, text);
 
             InsertExtras(contents, question);
 

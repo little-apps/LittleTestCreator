@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
-using Doc2Brightspace.Questions;
-using Doc2Brightspace.Questions.WrittenResponse;
+using BrightspaceTestCreator.Questions;
+using BrightspaceTestCreator.Questions.WrittenResponse;
 
-namespace Doc2Brightspace.Factories
+namespace BrightspaceTestCreator.Factories
 {
     public class WrittenResponseQuestionFactory : QuestionFactoryBase
     {

@@ -1,11 +1,15 @@
-﻿using Doc2Brightspace.Questions.MC;
+﻿using BrightspaceTestCreator.Questions.MultipleChoice;
 
-namespace Doc2Brightspace.Questions
+namespace BrightspaceTestCreator.Questions
 {
     public class TrueFalseQuestion : Question
     {
-        private MCQuestion _mcQuestion;
+        private readonly MultipleChoiceQuestion _mcQuestion;
 
+        /// <summary>
+        /// Answer to the true/false question.
+        /// </summary>
+        /// <remarks>Either true/false, or, null if no answer specified.</remarks>
         public bool? Answer
         {
             get
@@ -16,18 +20,12 @@ namespace Doc2Brightspace.Questions
                 return  _mcQuestion.Answer.Order == 'A';
             }
 
-            set
-            {
-                if (!value.HasValue)
-                    _mcQuestion.Answer = null;
-
-                _mcQuestion.Answer = _mcQuestion[value.Value ? 'A' : 'B'];
-            }
+            set => _mcQuestion.Answer = !value.HasValue ? null : _mcQuestion[value.Value ? 'A' : 'B'];
         }
 
         public TrueFalseQuestion(int number, string text) : base(number, text)
         {
-            _mcQuestion = new MCQuestion(number, text);
+            _mcQuestion = new MultipleChoiceQuestion(number, text);
             _mcQuestion.AddChoice(new Choice('A', "True"));
             _mcQuestion.AddChoice(new Choice('B', "False"));
         }

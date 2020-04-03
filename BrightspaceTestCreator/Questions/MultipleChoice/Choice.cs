@@ -1,4 +1,4 @@
-﻿namespace Doc2Brightspace.Questions.MC
+﻿namespace BrightspaceTestCreator.Questions.MultipleChoice
 {
     public class Choice : IAnswer
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{11715662-7239-4A09-820B-12D902EB1C1F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Doc2Brightspace</RootNamespace>
-    <AssemblyName>Doc2Brightspace</AssemblyName>
+    <RootNamespace>BrightspaceTestCreator</RootNamespace>
+    <AssemblyName>BrightspaceTestCreator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\LoggerFactory.cs" />
+    <Compile Include="Factories\ParserFactory.cs" />
     <Compile Include="Factories\QuestionsFactory.cs" />
     <Compile Include="Factories\QuestionFactoryBase.cs" />
     <Compile Include="Factories\MCQuestionFactory.cs" />
@@ -66,14 +68,19 @@
     <Compile Include="Factories\TrueFalseQuestionFactory.cs" />
     <Compile Include="Formatters\CsvFormatter.cs" />
     <Compile Include="Formatters\IFormatter.cs" />
+    <Compile Include="Log\Drivers\BaseLineFormatter.cs" />
+    <Compile Include="Log\Drivers\FileDriver.cs" />
+    <Compile Include="Log\Drivers\ConsoleDriver.cs" />
+    <Compile Include="Log\ILogDriver.cs" />
+    <Compile Include="Log\Logger.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Parsers\IParser.cs" />
-    <Compile Include="Parsers\MCParser.cs" />
+    <Compile Include="Parsers\RtfParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questions\IAnswer.cs" />
-    <Compile Include="Questions\MC\Choice.cs" />
-    <Compile Include="Questions\MC\MCQuestion.cs" />
+    <Compile Include="Questions\MultipleChoice\Choice.cs" />
+    <Compile Include="Questions\MultipleChoice\MultipleChoiceQuestion.cs" />
     <Compile Include="Questions\Question.cs" />
     <Compile Include="Questions\TrueFalseQuestion.cs" />
     <Compile Include="Questions\WrittenResponse\WrittenResponseAnswer.cs" />
@@ -83,5 +90,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

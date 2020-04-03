@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Doc2Brightspace.Questions
+namespace BrightspaceTestCreator.Questions
 {
+    /// <summary>
+    /// Common information for all question types.
+    /// </summary>
     public abstract class Question
     {
         public int Id { get; set; }

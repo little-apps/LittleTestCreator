@@ -1,6 +1,6 @@
-﻿namespace Doc2Brightspace.Questions.WrittenResponse
+﻿namespace BrightspaceTestCreator.Questions.WrittenResponse
 {
-    class WrittenResponseQuestion : Question
+    internal class WrittenResponseQuestion : Question
     {
         public WrittenResponseAnswer Answer { get; set; }
 

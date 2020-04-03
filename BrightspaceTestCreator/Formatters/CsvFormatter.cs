@@ -1,43 +1,44 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using BrightspaceTestCreator.Questions;
+using BrightspaceTestCreator.Questions.MultipleChoice;
+using BrightspaceTestCreator.Questions.WrittenResponse;
 using CsvHelper;
-using Doc2Brightspace.Questions;
-using Doc2Brightspace.Questions.MC;
-using Doc2Brightspace.Questions.WrittenResponse;
 
-namespace Doc2Brightspace.Formatters
+namespace BrightspaceTestCreator.Formatters
 {
     public class CsvFormatter : IFormatter
     {
         public string CsvFile { get; }
-        public string CourseCode { get; }
+        public string Prefix { get; }
 
-        public CsvFormatter(string courseCode, string csvFile)
+        public CsvFormatter(string csvFile, string prefix = "")
         {
             CsvFile = csvFile;
-            CourseCode = courseCode;
+            Prefix = prefix;
         }
 
         public void Format(IEnumerable<Question> questions)
         {
             using (var fs = new StreamWriter(CsvFile))
             {
-                using (var csvWriter = new CsvHelper.CsvWriter(fs))
+                using (var csvWriter = new CsvHelper.CsvWriter(fs, CultureInfo.InvariantCulture))
                 {
                     foreach (var question in questions.OrderBy((q) => q.Number))
                     {
-                        if (question is MCQuestion mcQuestion)
+                        switch (question)
                         {
-                            FormatMultipleChoice(csvWriter, mcQuestion);
-                        }
-                        else if (question is TrueFalseQuestion trueFalseQuestion)
-                        {
-                            FormatTrueFalse(csvWriter, trueFalseQuestion);
-                        }
-                        else if (question is WrittenResponseQuestion writtenResponseQuestion)
-                        {
-                            FormatWrittenResponse(csvWriter, writtenResponseQuestion);
+                            case MultipleChoiceQuestion mcQuestion:
+                                FormatMultipleChoice(csvWriter, mcQuestion);
+                                break;
+                            case TrueFalseQuestion trueFalseQuestion:
+                                FormatTrueFalse(csvWriter, trueFalseQuestion);
+                                break;
+                            case WrittenResponseQuestion writtenResponseQuestion:
+                                FormatWrittenResponse(csvWriter, writtenResponseQuestion);
+                                break;
                         }
                     }
                 }
@@ -47,7 +48,7 @@ namespace Doc2Brightspace.Formatters
                 
         }
 
-        private void FormatMultipleChoice(CsvWriter csvWriter, MCQuestion question)
+        private void FormatMultipleChoice(CsvWriter csvWriter, MultipleChoiceQuestion question)
         {
             csvWriter.NextRecord();
             csvWriter.WriteField("NewQuestion");
@@ -170,7 +171,6 @@ namespace Doc2Brightspace.Formatters
 
             csvWriter.NextRecord();
             csvWriter.NextRecord();
-
         }
 
         private void FormatWrittenResponse(CsvWriter csvWriter, WrittenResponseQuestion question)
@@ -229,7 +229,9 @@ namespace Doc2Brightspace.Formatters
 
         private string GenerateQuestionId(Question question)
         {
-            return $"{CourseCode}-{question.Id}";
+            var prefix = !string.IsNullOrEmpty(Prefix) ? Prefix + "-" : "";
+
+            return $"{prefix}{question.Id}";
         }
     }
 }

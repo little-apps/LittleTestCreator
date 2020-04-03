@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
-using Doc2Brightspace.Questions;
+using BrightspaceTestCreator.Questions;
 
-namespace Doc2Brightspace.Factories
+namespace BrightspaceTestCreator.Factories
 {
     public abstract class QuestionFactoryBase
     {

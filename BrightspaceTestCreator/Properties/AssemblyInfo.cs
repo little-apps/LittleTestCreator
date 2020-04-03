@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Rtf2Brightspace")]
+[assembly: AssemblyTitle("BrightspaceTestCreator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Rtf2Brightspace")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCompany("SAIT")]
+[assembly: AssemblyProduct("BrightspaceTestCreator")]
+[assembly: AssemblyCopyright("Created by Nick Hamnett.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

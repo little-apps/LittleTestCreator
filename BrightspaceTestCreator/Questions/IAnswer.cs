@@ -1,4 +1,4 @@
-﻿namespace Doc2Brightspace.Questions
+﻿namespace BrightspaceTestCreator.Questions
 {
     interface IAnswer
     {
