@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using BrightspaceTestCreator.Questions;
 
-namespace BrightspaceTestCreator.Formatters
+namespace BrightspaceTestCreator.Interfaces
 {
     internal interface IFormatter
     {
-        void Format(IEnumerable<Question> questions);
+        void Format(IEnumerable<IQuestion> questions);
     }
 }

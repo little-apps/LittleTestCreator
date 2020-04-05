@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using BrightspaceTestCreator.Interfaces;
 using BrightspaceTestCreator.Questions;
 using BrightspaceTestCreator.Questions.MultipleChoice;
 using BrightspaceTestCreator.Questions.WrittenResponse;
