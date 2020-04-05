@@ -18,6 +18,9 @@ namespace BrightspaceTestCreator.Factories
             {
                 case ".rtf":
                     return new RtfConverter(sourceFile);
+                case ".doc":
+                case ".docx":
+                    return new DocConverter(sourceFile);
                 default:
                     throw new ArgumentException($"Unable to determine parser for file extension '{fileExt}'.", nameof(sourceFile));
             }
