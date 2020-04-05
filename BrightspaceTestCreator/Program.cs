@@ -46,7 +46,6 @@ namespace BrightspaceTestCreator
         private static void RunWithParsed(Options options)
         {
             var parser = ParserFactory.Build(options.SourceFile);
-            var stream = parser.Parse();
 
             var csvFormatter = new CsvFormatter( options.DestFile, options.CourseCode);
             var questionsFactory = new QuestionsFactory(stream);

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using BrightspaceTestCreator.Interfaces;
 
-namespace BrightspaceTestCreator.Parsers
+namespace BrightspaceTestCreator.Converters
 {
-    internal class RtfParser : IParser
+    internal class RtfConverter : IConverter
     {
         public string SourceFile { get; }
 
-        internal RtfParser(string sourceFile)
+        internal RtfConverter(string sourceFile)
         {
             if (!File.Exists(SourceFile))
                 throw new ArgumentException("Source file not found.", nameof(sourceFile));
@@ -16,7 +17,7 @@ namespace BrightspaceTestCreator.Parsers
             SourceFile = sourceFile;
         }
 
-        public Stream Parse()
+        public Stream Convert()
         {
             var textStream = new MemoryStream();
 
