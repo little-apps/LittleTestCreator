@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using BrightspaceTestCreator.Interfaces;
 using BrightspaceTestCreator.Questions;
 using BrightspaceTestCreator.Questions.MultipleChoice;
 
@@ -24,7 +25,7 @@ namespace BrightspaceTestCreator.Factories
             return match.Success;
         }
 
-        public override Question Build(string contents)
+        public override IQuestion Build(string contents)
         {
             var questionMatch = _questionRegex.Match(contents);
 

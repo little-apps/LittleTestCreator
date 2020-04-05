@@ -1,18 +1,16 @@
 ﻿using System.Collections.Generic;
+using BrightspaceTestCreator.Interfaces;
 
 namespace BrightspaceTestCreator.Questions
 {
-    /// <summary>
-    /// Common information for all question types.
-    /// </summary>
-    public abstract class Question
+    internal sealed class Question : IQuestion
     {
         public int Id { get; set; }
         public int Number { get; }
         public string Text { get; }
-        public Dictionary<string, string> Extra { get; }
+        public IDictionary<string, string> Extra { get; }
 
-        public Question(int number, string text)
+        internal Question(int number, string text)
         {
             Number = number;
             Text = text;

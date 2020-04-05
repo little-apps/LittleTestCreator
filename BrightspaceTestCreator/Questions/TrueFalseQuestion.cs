@@ -1,10 +1,25 @@
-﻿using BrightspaceTestCreator.Questions.MultipleChoice;
+﻿using System.Collections.Generic;
+using BrightspaceTestCreator.Interfaces;
+using BrightspaceTestCreator.Questions.MultipleChoice;
 
 namespace BrightspaceTestCreator.Questions
 {
-    public class TrueFalseQuestion : Question
+    public class TrueFalseQuestion : IQuestion
     {
         private readonly MultipleChoiceQuestion _mcQuestion;
+        private readonly IQuestion _questionImplementation;
+
+        public int Id
+        {
+            get => _questionImplementation.Id;
+            set => _questionImplementation.Id = value;
+        }
+
+        public int Number => _questionImplementation.Number;
+
+        public string Text => _questionImplementation.Text;
+
+        public IDictionary<string, string> Extra => _questionImplementation.Extra;
 
         /// <summary>
         /// Answer to the true/false question.
@@ -23,13 +38,15 @@ namespace BrightspaceTestCreator.Questions
             set => _mcQuestion.Answer = !value.HasValue ? null : _mcQuestion[value.Value ? 'A' : 'B'];
         }
 
-        public TrueFalseQuestion(int number, string text) : base(number, text)
+        public TrueFalseQuestion(int number, string text)
         {
+            _questionImplementation = new Question(number, text);
             _mcQuestion = new MultipleChoiceQuestion(number, text);
             _mcQuestion.AddChoice(new Choice('A', "True"));
             _mcQuestion.AddChoice(new Choice('B', "False"));
         }
 
 
+        
     }
 }

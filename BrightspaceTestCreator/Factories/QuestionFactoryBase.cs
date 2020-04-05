@@ -1,17 +1,18 @@
 ﻿using System.Text.RegularExpressions;
+using BrightspaceTestCreator.Interfaces;
 using BrightspaceTestCreator.Questions;
 
 namespace BrightspaceTestCreator.Factories
 {
     public abstract class QuestionFactoryBase
     {
-        private Regex _difficultyRegex = new Regex(@"Difficulty: (.*)");
-        private Regex _feedbackRegex = new Regex(@"Feedback: (.*)");
+        private readonly Regex _difficultyRegex = new Regex(@"Difficulty: (.*)");
+        private readonly Regex _feedbackRegex = new Regex(@"Feedback: (.*)");
 
         public abstract bool CanBuild(string contents);
-        public abstract Question Build(string contents);
+        public abstract IQuestion Build(string contents);
 
-        public void InsertExtras(string contents, Question question)
+        public void InsertExtras(string contents, IQuestion question)
         {
             var difficultyMatch = _difficultyRegex.Match(contents);
 

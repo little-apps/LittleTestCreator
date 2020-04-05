@@ -1,4 +1,6 @@
-﻿namespace BrightspaceTestCreator.Questions.WrittenResponse
+﻿using BrightspaceTestCreator.Interfaces;
+
+namespace BrightspaceTestCreator.Questions.WrittenResponse
 {
     internal class WrittenResponseAnswer : IAnswer
     {

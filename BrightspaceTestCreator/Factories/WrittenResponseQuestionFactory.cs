@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using BrightspaceTestCreator.Interfaces;
 using BrightspaceTestCreator.Questions;
 using BrightspaceTestCreator.Questions.WrittenResponse;
 
@@ -18,7 +19,7 @@ namespace BrightspaceTestCreator.Factories
             return _questionRegex.IsMatch(contents);
         }
 
-        public override Question Build(string contents)
+        public override IQuestion Build(string contents)
         {
             var match = _questionRegex.Match(contents);
 

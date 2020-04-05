@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using BrightspaceTestCreator.Interfaces;
 using BrightspaceTestCreator.Questions;
 
 namespace BrightspaceTestCreator.Factories
@@ -44,7 +45,7 @@ namespace BrightspaceTestCreator.Factories
         /// Builds questions from stream contents.
         /// </summary>
         /// <returns>IEnumerable list of <seealso cref="Question"/> instances.</returns>
-        public IEnumerable<Question> Build()
+        public IEnumerable<IQuestion> Build()
         {
             IReadOnlyList<QuestionFactoryBase> questionFactories = new List<QuestionFactoryBase>
             {

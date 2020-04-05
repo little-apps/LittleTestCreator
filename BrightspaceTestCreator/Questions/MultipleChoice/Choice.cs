@@ -1,4 +1,6 @@
-﻿namespace BrightspaceTestCreator.Questions.MultipleChoice
+﻿using BrightspaceTestCreator.Interfaces;
+
+namespace BrightspaceTestCreator.Questions.MultipleChoice
 {
     public class Choice : IAnswer
     {

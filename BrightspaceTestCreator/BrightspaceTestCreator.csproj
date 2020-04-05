@@ -87,9 +87,10 @@
     <Compile Include="Converters\RtfConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Questions\IAnswer.cs" />
+    <Compile Include="Interfaces\IAnswer.cs" />
     <Compile Include="Questions\MultipleChoice\Choice.cs" />
     <Compile Include="Questions\MultipleChoice\MultipleChoiceQuestion.cs" />
+    <Compile Include="Interfaces\IQuestion.cs" />
     <Compile Include="Questions\Question.cs" />
     <Compile Include="Questions\TrueFalseQuestion.cs" />
     <Compile Include="Questions\WrittenResponse\WrittenResponseAnswer.cs" />

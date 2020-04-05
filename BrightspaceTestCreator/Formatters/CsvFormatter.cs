@@ -21,7 +21,7 @@ namespace BrightspaceTestCreator.Formatters
             Prefix = prefix;
         }
 
-        public void Format(IEnumerable<Question> questions)
+        public void Format(IEnumerable<IQuestion> questions)
         {
             using (var fs = new StreamWriter(CsvFile))
             {
@@ -220,7 +220,7 @@ namespace BrightspaceTestCreator.Formatters
 
         }
 
-        private string GenerateTitle(Question question)
+        private string GenerateTitle(IQuestion question)
         {
             if (question.Text.Length <= 60)
                 return question.Text;
@@ -228,7 +228,7 @@ namespace BrightspaceTestCreator.Formatters
             return question.Text.Substring(0, 60);
         }
 
-        private string GenerateQuestionId(Question question)
+        private string GenerateQuestionId(IQuestion question)
         {
             var prefix = !string.IsNullOrEmpty(Prefix) ? Prefix + "-" : "";
 

@@ -9,7 +9,7 @@ using CommandLine;
 
 namespace BrightspaceTestCreator
 {
-    class Program
+    internal static class Program
     {
         static void Main(string[] args)
         {
@@ -54,8 +54,8 @@ namespace BrightspaceTestCreator
                 var csvFormatter = new CsvFormatter(options.DestFile, options.CourseCode);
                 var questionsFactory = new QuestionsFactory(stream);
 
-            var questions = questionsFactory.Build().ToList();
-            csvFormatter.Format(questions);
+                var questions = questionsFactory.Build().ToList();
+                csvFormatter.Format(questions);
 
                 Logger.Log(Logger.Type.Success,$"Generated file at '{options.DestFile}' with {questions.Count}/{questionsFactory.TotalPossibleQuestions} questions.");
 
