@@ -71,12 +71,13 @@
     <Compile Include="Converters\DocConverter.cs" />
     <Compile Include="Factories\ConverterFactory.cs" />
     <Compile Include="Factories\QuestionsFactory.cs" />
-    <Compile Include="Factories\QuestionFactoryBase.cs" />
-    <Compile Include="Factories\MCQuestionFactory.cs" />
-    <Compile Include="Factories\WrittenResponseQuestionFactory.cs" />
-    <Compile Include="Factories\TrueFalseQuestionFactory.cs" />
+    <Compile Include="Factories\QuestionTypes\QuestionExtraFactory.cs" />
+    <Compile Include="Factories\QuestionTypes\MCQuestionFactory.cs" />
+    <Compile Include="Factories\QuestionTypes\WrittenResponseQuestionFactory.cs" />
+    <Compile Include="Factories\QuestionTypes\TrueFalseQuestionFactory.cs" />
     <Compile Include="Formatters\CsvFormatter.cs" />
     <Compile Include="Interfaces\IFormatter.cs" />
+    <Compile Include="Interfaces\IQuestionTypeFactory.cs" />
     <Compile Include="Log\Drivers\BaseLineFormatter.cs" />
     <Compile Include="Log\Drivers\FileDriver.cs" />
     <Compile Include="Log\Drivers\ConsoleDriver.cs" />

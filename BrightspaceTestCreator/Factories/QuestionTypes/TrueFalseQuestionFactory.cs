@@ -3,24 +3,27 @@ using System.Text.RegularExpressions;
 using BrightspaceTestCreator.Interfaces;
 using BrightspaceTestCreator.Questions;
 
-namespace BrightspaceTestCreator.Factories
+namespace BrightspaceTestCreator.Factories.QuestionTypes
 {
-    public class TrueFalseQuestionFactory : QuestionFactoryBase
+    public class TrueFalseQuestionFactory : IQuestionTypeFactory
     {
+        private readonly QuestionExtraFactory _questionExtraFactory;
+
         private Regex _questionRegex;
         
 
         public TrueFalseQuestionFactory()
         {
+            _questionExtraFactory = new QuestionExtraFactory();
             _questionRegex = new Regex(@"(\d+)\s*\.([^\n]+)\s*Ans:\s*(True|False)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
         }
 
-        public override bool CanBuild(string contents)
+        public bool CanBuild(string contents)
         {
             return _questionRegex.IsMatch(contents);
         }
 
-        public override IQuestion Build(string contents)
+        public IQuestion Build(string contents)
         {
             var match = _questionRegex.Match(contents);
 
@@ -35,7 +38,7 @@ namespace BrightspaceTestCreator.Factories
             else if (answer.Equals("false", StringComparison.CurrentCultureIgnoreCase))
                 question.Answer = false;
 
-            InsertExtras(contents, question);
+            _questionExtraFactory.InsertExtras(contents, question);
 
             return question;
         }

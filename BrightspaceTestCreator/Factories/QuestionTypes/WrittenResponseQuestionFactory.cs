@@ -1,25 +1,27 @@
 ﻿using System.Text.RegularExpressions;
 using BrightspaceTestCreator.Interfaces;
-using BrightspaceTestCreator.Questions;
 using BrightspaceTestCreator.Questions.WrittenResponse;
 
-namespace BrightspaceTestCreator.Factories
+namespace BrightspaceTestCreator.Factories.QuestionTypes
 {
-    public class WrittenResponseQuestionFactory : QuestionFactoryBase
+    public class WrittenResponseQuestionFactory : IQuestionTypeFactory
     {
+        private readonly QuestionExtraFactory _questionExtraFactory;
+
         private Regex _questionRegex;
 
         public WrittenResponseQuestionFactory()
         {
+            _questionExtraFactory = new QuestionExtraFactory();
             _questionRegex = new Regex(@"(\d+)\s*\.([^\n]+)\s+An(s|d):\s*(((?!True|False).)[^\n]+)\n", RegexOptions.IgnoreCase);
         }
 
-        public override bool CanBuild(string contents)
+        public bool CanBuild(string contents)
         {
             return _questionRegex.IsMatch(contents);
         }
 
-        public override IQuestion Build(string contents)
+        public IQuestion Build(string contents)
         {
             var match = _questionRegex.Match(contents);
 
@@ -31,7 +33,7 @@ namespace BrightspaceTestCreator.Factories
 
             question.Answer = new WrittenResponseAnswer(answer);
 
-            InsertExtras(contents, question);
+            _questionExtraFactory.InsertExtras(contents, question);
 
             return question;
         }

@@ -1,31 +1,33 @@
 ﻿using System.Text.RegularExpressions;
 using BrightspaceTestCreator.Interfaces;
-using BrightspaceTestCreator.Questions;
 using BrightspaceTestCreator.Questions.MultipleChoice;
 
-namespace BrightspaceTestCreator.Factories
+namespace BrightspaceTestCreator.Factories.QuestionTypes
 {
-    public class MCQuestionFactory : QuestionFactoryBase
+    public class MCQuestionFactory : IQuestionTypeFactory
     {
+        private readonly QuestionExtraFactory _questionExtraFactory;
         private Regex _questionRegex;
         private Regex _answersRegex;
 
         public MCQuestionFactory()
         {
+            _questionExtraFactory = new QuestionExtraFactory();
+
             //_questionRegex = new Regex(@"(\d+)\.([^\n]+)\n(.*)Ans:([^\n]*)", RegexOptions.Singleline);
             _questionRegex = new Regex(@"(\d+)\s*\.?(.+?)(([A-Z]\)[^\n]+\n)+)\s*Ans:([^\n]+)", RegexOptions.Singleline);
 
             _answersRegex = new Regex(@"([a-zA-Z])\)([^\n]+)\n");
         }
 
-        public override bool CanBuild(string question)
+        public bool CanBuild(string question)
         {
             var match = _questionRegex.Match(question);
 
             return match.Success;
         }
 
-        public override IQuestion Build(string contents)
+        public IQuestion Build(string contents)
         {
             var questionMatch = _questionRegex.Match(contents);
 
@@ -36,7 +38,7 @@ namespace BrightspaceTestCreator.Factories
 
             MultipleChoiceQuestion question = new MultipleChoiceQuestion(num, text);
 
-            InsertExtras(contents, question);
+            _questionExtraFactory.InsertExtras(contents, question);
 
             foreach (Match answerMatch in _answersRegex.Matches(answers))
             {

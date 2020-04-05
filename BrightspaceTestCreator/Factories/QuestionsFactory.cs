@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using BrightspaceTestCreator.Factories.QuestionTypes;
 using BrightspaceTestCreator.Interfaces;
 using BrightspaceTestCreator.Questions;
 
@@ -47,7 +48,7 @@ namespace BrightspaceTestCreator.Factories
         /// <returns>IEnumerable list of <seealso cref="Question"/> instances.</returns>
         public IEnumerable<IQuestion> Build()
         {
-            IReadOnlyList<QuestionFactoryBase> questionFactories = new List<QuestionFactoryBase>
+            IReadOnlyList<IQuestionTypeFactory> questionFactories = new List<IQuestionTypeFactory>
             {
                 new MCQuestionFactory(),
                 new TrueFalseQuestionFactory(),
