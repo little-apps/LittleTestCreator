@@ -59,7 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\LoggerFactory.cs" />
     <Compile Include="Factories\ParserFactory.cs" />
     <Compile Include="Factories\QuestionsFactory.cs" />
     <Compile Include="Factories\QuestionFactoryBase.cs" />
@@ -71,7 +70,7 @@
     <Compile Include="Log\Drivers\BaseLineFormatter.cs" />
     <Compile Include="Log\Drivers\FileDriver.cs" />
     <Compile Include="Log\Drivers\ConsoleDriver.cs" />
-    <Compile Include="Log\ILogDriver.cs" />
+    <Compile Include="Interfaces\ILogDriver.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Parsers\IParser.cs" />
