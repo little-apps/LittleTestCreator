@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\DocConverter.cs" />
     <Compile Include="Factories\ConverterFactory.cs" />
     <Compile Include="Factories\QuestionsFactory.cs" />
     <Compile Include="Factories\QuestionFactoryBase.cs" />
