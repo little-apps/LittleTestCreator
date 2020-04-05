@@ -17,8 +17,8 @@ namespace BrightspaceTestCreator
                 {
                     AddLogDrivers(o);
 
-                    if (ValidateParsed(o, logger))
-                        RunWithParsed(o, logger);
+                    if (ValidateParsed(o))
+                        RunWithParsed(o);
                 });
 
             Logger.Close();
