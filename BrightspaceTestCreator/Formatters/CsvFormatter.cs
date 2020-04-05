@@ -49,7 +49,7 @@ namespace BrightspaceTestCreator.Formatters
                 
         }
 
-        private void FormatMultipleChoice(CsvWriter csvWriter, MultipleChoiceQuestion question)
+        private void FormatMultipleChoice(IWriter csvWriter, MultipleChoiceQuestion question)
         {
             csvWriter.NextRecord();
             csvWriter.WriteField("NewQuestion");
@@ -101,7 +101,7 @@ namespace BrightspaceTestCreator.Formatters
 
         }
 
-        private void FormatTrueFalse(CsvWriter csvWriter, TrueFalseQuestion question)
+        private void FormatTrueFalse(IWriter csvWriter, TrueFalseQuestion question)
         {
             csvWriter.NextRecord();
             csvWriter.WriteField("NewQuestion");
@@ -174,7 +174,7 @@ namespace BrightspaceTestCreator.Formatters
             csvWriter.NextRecord();
         }
 
-        private void FormatWrittenResponse(CsvWriter csvWriter, WrittenResponseQuestion question)
+        private void FormatWrittenResponse(IWriter csvWriter, WrittenResponseQuestion question)
         {
             csvWriter.NextRecord();
             csvWriter.WriteField("NewQuestion");
