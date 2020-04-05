@@ -46,6 +46,8 @@ namespace BrightspaceTestCreator
 
         private static void RunWithParsed(Options options)
         {
+            try
+            {
                 var converter = ConverterFactory.Build(options.SourceFile);
                 var stream = converter.Convert();
 
@@ -57,6 +59,12 @@ namespace BrightspaceTestCreator
 
                 Logger.Log(Logger.Type.Success,$"Generated file at '{options.DestFile}' with {questions.Count}/{questionsFactory.TotalPossibleQuestions} questions.");
 
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(Logger.Type.Error, ex.Message);
+            }
+            
         }
     }
 }
