@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using BrightspaceTestCreator.Formatters;
 using BrightspaceTestCreator.Interfaces;
+using BrightspaceTestCreator.OutputFormatters;
 
 namespace BrightspaceTestCreator.Factories
 {

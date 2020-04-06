@@ -8,7 +8,7 @@ using BrightspaceTestCreator.Questions.MultipleChoice;
 using BrightspaceTestCreator.Questions.WrittenResponse;
 using CsvHelper;
 
-namespace BrightspaceTestCreator.Formatters
+namespace BrightspaceTestCreator.OutputFormatters
 {
     public class CsvFormatter : IOutputFormatter
     {
