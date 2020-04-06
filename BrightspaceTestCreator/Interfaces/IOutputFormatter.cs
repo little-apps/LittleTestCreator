@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using BrightspaceTestCreator.Questions;
 
 namespace BrightspaceTestCreator.Interfaces
 {
-    internal interface IFormatter
+    internal interface IOutputFormatter
     {
         void Format(IEnumerable<IQuestion> questions);
     }

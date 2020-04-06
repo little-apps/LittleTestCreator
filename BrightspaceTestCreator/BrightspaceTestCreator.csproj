@@ -76,7 +76,7 @@
     <Compile Include="Factories\QuestionTypes\WrittenResponseQuestionFactory.cs" />
     <Compile Include="Factories\QuestionTypes\TrueFalseQuestionFactory.cs" />
     <Compile Include="Formatters\CsvFormatter.cs" />
-    <Compile Include="Interfaces\IFormatter.cs" />
+    <Compile Include="Interfaces\IOutputFormatter.cs" />
     <Compile Include="Interfaces\IQuestionTypeFactory.cs" />
     <Compile Include="Log\Drivers\BaseLineFormatter.cs" />
     <Compile Include="Log\Drivers\FileDriver.cs" />

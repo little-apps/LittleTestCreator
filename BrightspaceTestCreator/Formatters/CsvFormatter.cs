@@ -10,7 +10,7 @@ using CsvHelper;
 
 namespace BrightspaceTestCreator.Formatters
 {
-    public class CsvFormatter : IFormatter
+    public class CsvFormatter : IOutputFormatter
     {
         public string CsvFile { get; }
         public string Prefix { get; }
