@@ -51,11 +51,12 @@ namespace BrightspaceTestCreator
                 var converter = ConverterFactory.Build(options.SourceFile);
                 var stream = converter.Convert();
 
-                var csvFormatter = new CsvFormatter(options.DestFile, options.CourseCode);
+                var formatter = OutputFormatterFactory.Build(options);
+
                 var questionsFactory = new QuestionsFactory(stream);
 
                 var questions = questionsFactory.Build().ToList();
-                csvFormatter.Format(questions);
+                formatter.Format(questions);
 
                 Logger.Log(Logger.Type.Success,$"Generated file at '{options.DestFile}' with {questions.Count}/{questionsFactory.TotalPossibleQuestions} questions.");
 

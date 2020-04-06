@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Converters\DocConverter.cs" />
     <Compile Include="Factories\ConverterFactory.cs" />
+    <Compile Include="Factories\OutputFormatterFactory.cs" />
     <Compile Include="Factories\QuestionsFactory.cs" />
     <Compile Include="Factories\QuestionTypes\QuestionExtraFactory.cs" />
     <Compile Include="Factories\QuestionTypes\MCQuestionFactory.cs" />
