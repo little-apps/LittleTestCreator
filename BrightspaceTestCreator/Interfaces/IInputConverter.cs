@@ -2,7 +2,7 @@
 
 namespace BrightspaceTestCreator.Interfaces
 {
-    internal interface IConverter
+    internal interface IInputConverter
     {
         /// <summary>
         /// Convert source file to stream with plain-text.

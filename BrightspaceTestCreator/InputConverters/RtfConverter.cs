@@ -3,9 +3,9 @@ using System.IO;
 using System.Windows.Forms;
 using BrightspaceTestCreator.Interfaces;
 
-namespace BrightspaceTestCreator.Converters
+namespace BrightspaceTestCreator.InputConverters
 {
-    internal class RtfConverter : IConverter
+    internal class RtfConverter : IInputConverter
     {
         public string SourceFile { get; }
 

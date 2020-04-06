@@ -47,7 +47,7 @@ namespace BrightspaceTestCreator
         {
             try
             {
-                var converter = ConverterFactory.Build(options.SourceFile);
+                var converter = InputConverterFactory.Build(options.SourceFile);
                 var stream = converter.Convert();
 
                 var formatter = OutputFormatterFactory.Build(options);

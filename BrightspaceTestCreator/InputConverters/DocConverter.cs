@@ -3,9 +3,9 @@ using System.IO;
 using BrightspaceTestCreator.Interfaces;
 using Spire.Doc;
 
-namespace BrightspaceTestCreator.Converters
+namespace BrightspaceTestCreator.InputConverters
 {
-    internal class DocConverter : IConverter
+    internal class DocConverter : IInputConverter
     {
         public string SourceFile { get; }
         private readonly Document _document;

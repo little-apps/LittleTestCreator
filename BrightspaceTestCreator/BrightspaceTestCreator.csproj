@@ -68,8 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\DocConverter.cs" />
-    <Compile Include="Factories\ConverterFactory.cs" />
+    <Compile Include="InputConverters\DocConverter.cs" />
+    <Compile Include="Factories\InputConverterFactory.cs" />
     <Compile Include="Factories\OutputFormatterFactory.cs" />
     <Compile Include="Factories\QuestionsFactory.cs" />
     <Compile Include="Factories\QuestionTypes\QuestionExtraFactory.cs" />
@@ -85,8 +85,8 @@
     <Compile Include="Interfaces\ILogDriver.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Options.cs" />
-    <Compile Include="Interfaces\IConverter.cs" />
-    <Compile Include="Converters\RtfConverter.cs" />
+    <Compile Include="Interfaces\IInputConverter.cs" />
+    <Compile Include="InputConverters\RtfConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IAnswer.cs" />

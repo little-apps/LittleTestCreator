@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
-using BrightspaceTestCreator.Converters;
+using BrightspaceTestCreator.InputConverters;
 using BrightspaceTestCreator.Interfaces;
 
 namespace BrightspaceTestCreator.Factories
 {
-    internal static class ConverterFactory
+    internal static class InputConverterFactory
     {
-        public static IConverter Build(string sourceFile)
+        public static IInputConverter Build(string sourceFile)
         {
             if (string.IsNullOrEmpty(sourceFile))
                 throw new ArgumentNullException(nameof(sourceFile));
