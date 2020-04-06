@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using BrightspaceTestCreator.Factories;
-using BrightspaceTestCreator.Formatters;
 using BrightspaceTestCreator.Log;
 using BrightspaceTestCreator.Log.Drivers;
 using CommandLine;
