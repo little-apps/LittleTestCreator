@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using CommandLine;
+using TestCreator.Exceptions;
 using TestCreator.Factories;
 using TestCreator.Log;
 using TestCreator.Log.Drivers;
@@ -13,13 +13,23 @@ namespace TestCreator
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)
-                .WithParsed(o =>
+                .MapResult(o =>
                 {
                     AddLogDrivers(o);
 
-                    if (ValidateParsed(o))
-                        RunWithParsed(o);
-                });
+                    try
+                    {
+                        o.Validate();
+
+                        return RunWithParsed(o);
+                    }
+                    catch (InvalidOptionException ex)
+                    {
+                        Logger.Log(Logger.Type.Error, ex.Message);
+                        return 1;
+                    }
+                },
+                    _ => 1);
 
             Logger.Close();
         }
@@ -37,26 +47,10 @@ namespace TestCreator
         }
 
         /// <summary>
-        /// Performs additional validation to options.
-        /// </summary>
-        /// <param name="options">Program run options.</param>
-        /// <returns>True if options are valid.</returns>
-        private static bool ValidateParsed(Options options)
-        {
-            if (!File.Exists(options.SourceFile))
-            {
-                Logger.Log(Logger.Type.Error, $"Source file {options.SourceFile} does not exist.");
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
         /// Performs program execution with valid options.
         /// </summary>
         /// <param name="options">Program run options</param>
-        private static void RunWithParsed(Options options)
+        private static int RunWithParsed(Options options)
         {
             try
             {
@@ -72,10 +66,13 @@ namespace TestCreator
 
                 Logger.Log(Logger.Type.Success,$"Generated file at '{options.DestFile}' with {questions.Count}/{questionsFactory.TotalPossibleQuestions} questions.");
 
+                return 0;
             }
             catch (Exception ex)
             {
                 Logger.Log(Logger.Type.Error, ex.Message);
+
+                return 1;
             }
             
         }

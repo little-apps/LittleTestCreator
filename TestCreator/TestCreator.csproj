@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\InvalidOptionException.cs" />
     <Compile Include="InputConverters\DocConverter.cs" />
     <Compile Include="Factories\InputConverterFactory.cs" />
     <Compile Include="Factories\OutputFormatterFactory.cs" />
