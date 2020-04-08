@@ -1,6 +1,6 @@
 ﻿namespace TestCreator.Interfaces
 {
-    interface IQuestionTypeFactory
+    internal interface IQuestionTypeFactory
     {
         /// <summary>
         /// Determines if a <seealso cref="IQuestion"/> can be created.
