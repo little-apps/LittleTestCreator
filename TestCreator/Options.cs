@@ -4,6 +4,9 @@ using TestCreator.Exceptions;
 
 namespace TestCreator
 {
+    /// <summary>
+    /// Contains parsed options from command line arguments.
+    /// </summary>
     internal class Options
     {
         [Value(0, HelpText = "Source document", Required = true)]

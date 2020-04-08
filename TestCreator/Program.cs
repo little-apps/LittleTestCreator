@@ -10,6 +10,10 @@ namespace TestCreator
 {
     internal static class Program
     {
+        /// <summary>
+        /// Entry point to program.
+        /// </summary>
+        /// <param name="args">Arguments passed in command line.</param>
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)

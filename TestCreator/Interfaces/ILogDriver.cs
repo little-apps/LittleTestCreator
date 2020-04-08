@@ -1,5 +1,8 @@
 ﻿namespace TestCreator.Interfaces
 {
+    /// <summary>
+    /// Defines driver for handling log messages.
+    /// </summary>
     internal interface ILogDriver
     {
         void Warning(string message);

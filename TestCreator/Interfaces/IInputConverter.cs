@@ -2,6 +2,9 @@
 
 namespace TestCreator.Interfaces
 {
+    /// <summary>
+    /// Defines input converter.
+    /// </summary>
     internal interface IInputConverter
     {
         /// <summary>
