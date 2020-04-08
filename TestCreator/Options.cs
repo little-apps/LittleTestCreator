@@ -6,10 +6,10 @@ namespace TestCreator
 {
     internal class Options
     {
-        [Value(0, HelpText = "Source document")]
+        [Value(0, HelpText = "Source document", Required = true)]
         public string SourceFile { get; set; }
 
-        [Value(1, HelpText = "Destination CSV file")]
+        [Value(1, HelpText = "Destination CSV file", Required = true)]
         public string DestFile { get; set; }
 
         [Option("code", HelpText = "Course code to use for question IDs.")]
