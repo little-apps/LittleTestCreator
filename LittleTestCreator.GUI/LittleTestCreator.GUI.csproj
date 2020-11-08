@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>LittleTestCreator.GUI</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LittleTestCreator.InputConverter.Kahoot\LittleTestCreator.InputConverter.Kahoot.csproj" />
+    <ProjectReference Include="..\LittleTestCreator.InputConverter.Kitty\LittleTestCreator.InputConverter.Kitty.csproj" />
+    <ProjectReference Include="..\LittleTestCreator.InputConverter.OSConcepts\LittleTestCreator.InputConverter.OSConcepts.csproj" />
+    <ProjectReference Include="..\LittleTestCreator.OutputFormatter.Brightspace\LittleTestCreator.OutputFormatter.Brightspace.csproj" />
+    <ProjectReference Include="..\LittleTestCreator.Shared\LittleTestCreator.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

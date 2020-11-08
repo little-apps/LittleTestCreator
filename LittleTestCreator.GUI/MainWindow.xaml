@@ -1,0 +1,86 @@
+﻿<Window x:Class="LittleTestCreator.GUI.MainWindow"
+        x:Name="mainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LittleTestCreator.GUI"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:ViewModel}"
+        Title="Little Test Creator" Width="537" Height="250" MinWidth="500" MinHeight="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="51"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Text="Test Creator v1.0" TextWrapping="Wrap" FontSize="20" Height="27" Width="147"/>
+            <TextBlock Text="Written by: Nick Hamnett" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="0,0,0,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Input Format:" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,10,0" />
+                <ComboBox ItemsSource="{Binding Inputs}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" VerticalContentAlignment="Center"/>
+
+                <TextBlock Text="Output Format:" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,0" />
+                <ComboBox ItemsSource="{Binding Outputs}" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" VerticalContentAlignment="Center"/>
+            </Grid>
+            <TextBlock Text="Source File:" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,10,0" />
+
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="66" />
+                </Grid.ColumnDefinitions>
+                <TextBox Text="{Binding SourceFile}" Grid.Column="0" VerticalContentAlignment="Center" Height="25" VerticalAlignment="Center" />
+                <Button x:Name="buttonSourceFileBrowse" Content="Browse..." Grid.Column="1" Height="25" Margin="5,0,5,0" Click="buttonSourceFileBrowse_Click" />
+            </Grid>
+
+            <TextBlock Text="Destination File:" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,10,0" />
+
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="66" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" VerticalContentAlignment="Center" Height="25" Text="{Binding DestinationFile}" />
+                <Button x:Name="buttonDestinationFileBrowse" Content="Browse..." Grid.Column="1" Height="25" Margin="5,0,5,0" Click="buttonDestinationFileBrowse_Click" />
+            </Grid>
+
+            <TextBlock Text="Options:" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,10,0" />
+            <Grid Grid.Column="1" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Skip Page Breaks:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" />
+                <TextBox Text="{Binding SkipPageBreaks}" Grid.Column="1" Width="50" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+            </Grid>
+
+            <Button x:Name="convertButton" Grid.Row="4" Grid.ColumnSpan="2" Width="75" Height="25" Click="convertButton_Click">Convert</Button>
+        </Grid>
+
+    </Grid>
+</Window>
