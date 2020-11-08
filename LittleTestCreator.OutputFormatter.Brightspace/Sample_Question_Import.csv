@@ -1,0 +1,116 @@
+"//(Note: The 'images' folder is assumed to be in the ""/content/<course path>/"" directory)",
+//Question Text is always a required field,
+// An ID will be generated using the (Course code)-(Question number) if an ID is not specified for a question,
+
+
+//WRITTEN RESPONSE QUESTION TYPE,
+//This sample question also shows how you can set a question caID for the question of format {Course Code}-{Question Number},
+NewQuestion,WR
+ID,CHEM110-234
+Title,This is a written response question
+QuestionText,This is the question text for WR1
+Points,1
+Difficulty,7
+Image,images/LA1.jpg
+InitialText,This is the initial text
+AnswerKey,This is the answer key text
+Hint,This is the hint text
+Feedback,This is the feedback text
+
+
+//SHORT ANSWER QUESTION TYPE,
+//Answers must include text in column3,
+NewQuestion,SA
+ID,CHEM110-235
+Title,This is a short answer question
+QuestionText,This is the question text for SA1
+Points,5
+Difficulty,2
+Image,images/SA1.jpg
+InputBox,3,40,
+Answer,100,This is the text for answer 1,regexp
+Answer,50,This is the text for answer 2,
+Hint,This is the hint text,,
+Feedback,This is the feedback text,,
+
+//MATCHING QUESTION TYPE,,,
+//Choices and Matches must include text in column3,,,
+NewQuestion,M,,
+ID,CHEM110-236
+Title,This is a matching question,,
+QuestionText,This is the question text for M1,,
+Points,2,,
+Difficulty,2,,
+Image,images/mc1.jpg,,
+Scoring,EquallyWeighted,,
+Choice,1,This is choice 1 text,
+Choice,2,This is choice 2 text
+Choice,3,This is choice 3 text
+Match,3,This matches with choice 3
+Match,1,This matches with choice 1
+Match,2,This matches with choice 2
+Hint,This is the hint text,
+Feedback,This is the feedback text,
+
+//MULTIPLE CHOICE QUESTION TYPE,,
+//Options must include text in column3,,
+NewQuestion,MC,
+ID,CHEM110-237
+Title,This is a multiple choice question,
+QuestionText,This is the question text for MC1,
+Points,1,
+Difficulty,1,
+Image,images/MC1.jpg,
+Option,100,This is the correct answer,,This is feedback for option 1
+Option,0,This is incorrect answer 1,,This is feedback for option 2
+Option,0,This is incorrect answer 2,,This is feedback for option 3
+Option,25,This is partially correct,,This is feedback for option 4
+Hint,This is the hint text,,,
+Feedback,This is the feedback text,,,
+
+
+//TRUE / FALSE QUESTION TYPE,,,,
+NewQuestion,TF,,,
+ID,CHEM110-238
+Title,This is a True/False question,,,
+QuestionText,This is the question text for TF1,,,
+Points,1,,,
+Difficulty,1,,,
+Image,images/TF1.jpg,,,
+TRUE,100,This is feedback for 'TRUE',,
+FALSE,0,This is feedback for 'FALSE',,
+Hint,This is the hint text,,,
+Feedback,This is the feedback text,,,
+
+
+//MULTISELECT QUESTION TYPE,,,,
+//Options must include text in column3,,,,
+NewQuestion,MS,,,
+ID,CHEM110-239
+Title,This is a Multi-Select question,,,
+QuestionText,This is the question text for MS1,,,
+Points,10,,,
+Difficulty,5,,,
+Image,images/MS1.jpg,,,
+Scoring,RightAnswers,,,
+Option,1,This is option 1 text,,This is feedback for option 1
+Option,0,This is option 2 text,,This is feedback for option 2
+Option,1,This is option 3 text,,This is feedback for option 3
+Hint,This is the hint text,,,
+Feedback ,This is the feedback text,,,
+
+
+//ORDERING QUESTION TYPE,,,,
+//Items must include text in column2,,,,
+NewQuestion,O,,,
+ID,CHEM110-240
+Title,This is an ordering question,,,
+QuestionText,This is the question text for O1,,,
+Points,2,,,
+Difficulty,2,,,
+Scoring,RightMinusWrong,,,
+Image,images/O1.jpg,,,
+Item,This is the text for item 1,NOT HTML,This is feedback for option 1,
+Item,This is the text for item 2,HTML,This is feedback for option 2,
+Hint,This is the hint text
+Feedback,This is the feedback text
