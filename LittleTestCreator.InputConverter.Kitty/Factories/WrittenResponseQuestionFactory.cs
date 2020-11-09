@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using LittleTestCreator.Shared.Questions.WrittenResponse;
 
 namespace LittleTestCreator.InputConverter.Kitty.Factories
@@ -10,9 +12,10 @@ namespace LittleTestCreator.InputConverter.Kitty.Factories
         /// </summary>
         /// <param name="number">Question number</param>
         /// <param name="question">Question</param>
+        /// <param name="answers">Answer(s) to question</param>
         /// <returns>Created <seealso cref="WrittenResponseQuestion"/> instance</returns>
         /// <remarks>This does not include the answer to the question.</remarks>
-        public static WrittenResponseQuestion Build(int number, string question)
+        public static WrittenResponseQuestion Build(int number, string question, IEnumerable<string> answers)
         {
             // Parse # of marks.
             var regex = new Regex(@"\((\d+) marks?\)");
@@ -30,7 +33,9 @@ namespace LittleTestCreator.InputConverter.Kitty.Factories
                 }
             }
 
-            return new WrittenResponseQuestion(number, question.Trim()) { Id = number, Points = points };
+            var writtenResponseAnswer = new WrittenResponseAnswer(string.Join("\r\n", answers));
+
+            return new WrittenResponseQuestion(number, question.Trim()) { Id = number, Points = points, Answer = writtenResponseAnswer };
         }
 
 

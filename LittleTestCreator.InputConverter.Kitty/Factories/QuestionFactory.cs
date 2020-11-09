@@ -11,11 +11,11 @@ namespace LittleTestCreator.InputConverter.Kitty.Factories
         /// <returns>Created <seealso cref="IQuestion"/> instance.</returns>
         internal static IQuestion Build(Question kittyQuestion)
         {
-            // If we have answers, it's a multiple choice question
+            // If we have two or more answers, it's a multiple choice question
             return 
-                kittyQuestion.Answers.Count > 0 ? 
+                kittyQuestion.Answers.Count > 1 ? 
                     MultipleChoiceQuestionFactory.Build(kittyQuestion.Number, kittyQuestion.QuestionText, kittyQuestion.Answers, kittyQuestion.CorrectAnswerIndex) : 
-                    WrittenResponseQuestionFactory.Build(kittyQuestion.Number, kittyQuestion.QuestionText);
+                    WrittenResponseQuestionFactory.Build(kittyQuestion.Number, kittyQuestion.QuestionText, kittyQuestion.Answers);
         }
     }
 }

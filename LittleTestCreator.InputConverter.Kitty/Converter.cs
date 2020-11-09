@@ -83,15 +83,11 @@ namespace LittleTestCreator.InputConverter.Kitty
                         currentQuestion?.Answers.Add(paragraph.Text);
 
                         // Check if answer is answer color
-                        // Color is returned as hex string "FF0000" (Why? Who knows!)
-                        var colorText = paragraph.Runs[0].GetColor();
+                        var color = DetermineParagraphColor(paragraph);
 
-                        if (colorText != null && currentQuestion != null)
+                        if (color.HasValue && currentQuestion != null)
                         {
-                            var colorNum = System.Convert.ToInt32(colorText, 16);
-                            var color = Color.FromArgb(colorNum);
-
-                            if (color.R == _answerColor.R && color.G == _answerColor.G && color.B == _answerColor.B)
+                            if (IsAnswer(paragraph))
                             {
                                 // This is the answer.
                                 currentQuestion.CorrectAnswerIndex = answers;
@@ -109,7 +105,17 @@ namespace LittleTestCreator.InputConverter.Kitty
                     {
                         if (inQuestion && currentQuestion != null)
                         {
-                            currentQuestion.QuestionText += paragraph.Text;
+                            if (IsAnswer(paragraph))
+                            {
+                                inQuestion = false;
+
+                                currentQuestion.Answers.Add(paragraph.Text);
+                            }
+                            else
+                            {
+                                currentQuestion.QuestionText += paragraph.Text;
+                            }
+                            
                         }
                         else if (currentQuestion != null && currentQuestion.Answers.Count > 0)
                         {
@@ -127,6 +133,39 @@ namespace LittleTestCreator.InputConverter.Kitty
                 yield return QuestionFactory.Build(currentQuestion);
             }
 
+        }
+
+        /// <summary>
+        /// Determines the color of text in a <seealso cref="XWPFParagraph"/>
+        /// </summary>
+        /// <param name="paragraph">Paragraph in Word document</param>
+        /// <returns>Color as <seealso cref="Color"/> or null if unable to determine.</returns>
+        private static Color? DetermineParagraphColor(XWPFParagraph paragraph)
+        {
+            if (paragraph.Runs.Count == 0)
+                return null;
+
+            // Color is returned as hex string "FF0000" (Why? Who knows!)
+            var colorText = paragraph.Runs[0].GetColor();
+            var colorNum = System.Convert.ToInt32(colorText, 16);
+
+            return Color.FromArgb(colorNum);
+        }
+
+        /// <summary>
+        /// Checks if paragraph is answer.
+        /// </summary>
+        /// <param name="paragraph">Paragraph to check</param>
+        /// <returns>True if paragraph is answer.</returns>
+        private bool IsAnswer(XWPFParagraph paragraph)
+        {
+            var color = DetermineParagraphColor(paragraph);
+
+            if (!color.HasValue)
+                return false;
+
+            return color.Value.R == _answerColor.R && color.Value.G == _answerColor.G &&
+                   color.Value.B == _answerColor.B;
         }
     }
 }
