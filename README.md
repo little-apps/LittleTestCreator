@@ -1,8 +1,8 @@
 # Little Test Creater
 
-![Little Test Creator GUI](https://i.imgur.com/MRFxfro.png)
-
 Little Test Creator converts a test bank from an existing format into an output format. It was created to easily convert existing quizzes and exams formatted as Word documents so they can be easily graded using Brightspace.
+
+![Little Test Creator GUI](https://i.imgur.com/MRFxfro.png)
 
 ## Licensing
 Little Test Creater is licensed under the MIT License.
