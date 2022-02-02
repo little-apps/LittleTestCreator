@@ -1,5 +1,8 @@
 # Little Test Creater
-Little Test Creator converts a test from an existing format into another output format. It was created to easily convert existing quizzes and exams formatted as Word documents so they can be easily graded using Brightspace.
+
+Little Test Creator converts a test bank from an existing format into an output format. It was created to easily convert existing quizzes and exams formatted as Word documents so they can be easily graded using Brightspace.
+
+![Little Test Creator GUI](https://i.imgur.com/MRFxfro.png)
 
 ## Licensing
 Little Test Creater is licensed under the MIT License.
@@ -24,9 +27,12 @@ Additional documentation on Little Test Creator can be found in the [wiki](https
 
  * Blackboard output format.
  * Support math equations in MathML and LaTeX.
+ 
+## Donate
+
+Little Apps relies on people like you to keep our software running. If you would like to show your support for Little Test Creator, then you can [make a donation](https://www.little-apps.com/?donate) using PayPal, Payza or credit card (via Stripe). Please note that any amount helps (even just $1).
 
 ## Credits
  * [CommandLineParser](https://github.com/commandlineparser/commandline)
  * [CsvHelper](https://joshclose.github.io/CsvHelper/)
  * [NPOI](https://github.com/nissl-lab/npoi)
-
